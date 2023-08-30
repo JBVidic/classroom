@@ -1,0 +1,51 @@
+- name: Set Processing version
+  set_fact:
+    target_version: 4.0.1
+    target_build: 1286
+
+- name: Check Processing install status
+  win_stat:
+    path: C:\Program Files\Processing\lib\version.txt
+  register: file
+
+- name: Check Processing version
+  slurp:
+    src: C:\Program Files\Processing\lib\version.txt
+  register: version
+  when: file.stat.exists
+
+- when: not file.stat.exists or ((version.content | b64decode) != target_version)
+  block:
+    - name: Make Processing directory
+      win_file:
+        path: C:\Program Files\Processing
+        state: directory
+    - name: Download Processing
+      win_get_url:
+        dest: 'C:\Program Files\Processing\processing.zip'
+        url: https://github.com/processing/processing4/releases/download/processing-{{ target_build }}-{{ target_version }}/processing-{{ target_version }}-windows-x64.zip
+    - name: Unzip Processing
+      win_unzip:
+        dest: 'C:\Program Files\Processing'
+        src: 'C:\Program Files\Processing\processing.zip'
+    - name: Install Processing
+      win_copy:
+        dest: C:\Program Files\Processing\
+        src: 'C:\Program Files\Processing\processing-{{ target_version }}\'
+        remote_src: yes
+    - name: Disable telemetry
+      win_lineinfile:
+        path: C:\Program Files\Processing\lib\defaults.txt
+        regexp: 'update.check'
+        line: 'update.check = false'
+    - name: Create Processing shortcut
+      win_shortcut:
+        src: "%ProgramFiles%\\Processing\\processing.exe"
+        dest: "C:\\Users\\Public\\Desktop\\Processing.lnk"
+    - name: Remove temporary files
+      win_file:
+        path: C:\Program Files\Processing\{{ item }}
+        state: absent
+      loop:
+        - processing.zip
+        - processing-{{ target_version }}

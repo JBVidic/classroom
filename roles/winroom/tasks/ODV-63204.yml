@@ -1,0 +1,4 @@
+# Osnove digitalnih vezij
+# Ziga.Pusnik@fri.uni-lj.si, Miran.Koprivec@fri.uni-lj.si
+# Windows, Logisim, Logisim Evolution
+- include_tasks: logisim.yml

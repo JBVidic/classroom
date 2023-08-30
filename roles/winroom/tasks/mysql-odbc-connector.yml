@@ -1,0 +1,9 @@
+- name: Install MySQL ODBC connector (32-bit)
+  win_package:
+    path: https://dev.mysql.com/get/Downloads/Connector-ODBC/8.0/mysql-connector-odbc-8.0.30-win32.msi
+    product_id: "8f52ac06-953a-49fc-95d9-58497892fa21"
+
+- name: Install MySQL ODBC connector (64-bit)
+  win_package:
+    path: https://dev.mysql.com/get/Downloads/Connector-ODBC/8.0/mysql-connector-odbc-8.0.30-winx64.msi
+    product_id: "a02f5ad7-2744-4911-a102-8253913ca59c"

@@ -1,0 +1,6 @@
+all:
+  children:
+    classroom:
+      hosts:
+        prototip:
+          ansible_host: 10.32.231.3

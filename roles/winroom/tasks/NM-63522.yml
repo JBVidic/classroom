@@ -1,0 +1,5 @@
+# Numerična matematika
+# Martin.Vuk@fri.uni-lj.si
+# VS Code, Julia
+- include_tasks: vscode.yml
+- include_tasks: julia.yml

@@ -1,0 +1,32 @@
+- name: Set Visual2 version
+  set_fact:
+    target_version: "1.06.10"
+
+- name: Check Visual2 install status
+  win_stat:
+    path: "%ProgramFiles%\\VisUAL2\\VisUAL2.exe"
+  register: file
+  
+- when: not file.stat.exists
+  block:
+    - name: Download Visual2
+      win_get_url:
+        url: https://github.com/tomcl/V2releases/releases/download/{{ target_version }}/visual2-win32-x64.zip
+        dest: 'C:\'
+      register: download
+    
+    - name: Create Visual2 directory
+      win_file:
+        path: "%ProgramFiles%\\VisUAL2"
+        state: directory
+
+    - name: Install Visual2
+      win_unzip:
+        src: "{{ download.dest }}"
+        dest: "%ProgramFiles%\\VisUAL2"
+        delete_archive: yes
+
+    - name: Create Visual2 shortcut
+      win_shortcut:
+        src: "%ProgramFiles%\\Visual2\\VisUAL2.exe"
+        dest: "C:\\Users\\Public\\Desktop\\VisUAL2.lnk"

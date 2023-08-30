@@ -1,0 +1,30 @@
+- name: Install QCADesigner-E build deps
+  block:
+    - name: Install automake
+      apt:
+        name: automake
+        state: latest
+    - name: Install automake
+      apt:
+        name: libgtk2.0-dev
+        state: latest
+- name: Create QCADesigner-E destination
+  file:
+    path: /opt/QCADesigner-E
+    state: directory
+- name: Clone QCADesigner-E repo
+  #  
+  ansible.builtin.git:
+    repo: https://github.com/FSillT/QCADesigner-E
+    force: yes
+    dest: /opt/QCADesigner-E
+- name: Build QCADesigner-E
+  shell:
+    cmd: cd /opt/QCADesigner-E/QCADesignerE && chmod +x ./configure && ./configure && make
+- name: Create QCADesigner-e symlink
+  file:
+    src: /opt/QCADesigner-E/QCADesignerE/src/QCADesigner
+    dest: /usr/local/bin/QCADesigner
+    state: link
+# TODO create .desktop file
+

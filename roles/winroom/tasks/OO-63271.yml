@@ -1,0 +1,8 @@
+# Osnove oblikovanja
+# Blaz.Meden@fri.uni-lj.si, Narvika.Bovcon@fri.uni-lj.si
+# Blender, Adobe paket (Illustrator, Photoshop, After Effects, Premiere), Processing (orodje za vizualno in interaktivno grafično programiranje), Inkscape (zastonjsko orodje za vektorsko risanje), GIMP (program za urejanje slik in rastrsko risanje)
+- include_tasks: blender.yml
+- include_tasks: adobe_cs.yml
+- include_tasks: inkscape.yml
+- include_tasks: gimp.yml
+

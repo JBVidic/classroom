@@ -1,0 +1,112 @@
+- name: Add Firefox not-a-snap repository
+  block:
+    - name: Pin Firefox PPA package priority
+      template:
+        src: mozilla-firefox-apt-preferences
+        dest: /etc/apt/preferences.d/mozilla-firefox
+    - name: Enable Firefox unattended upgrades
+      template:
+        src: mozilla-firefox-unattended-upgrades 
+        dest: /etc/apt/apt.conf.d/51unattended-upgrades-firefox
+    - name: Add Firefox PPA
+      apt_repository:
+        repo: ppa:mozillateam/ppa
+        state: present
+        update_cache: True
+        validate_certs: False
+
+- name: Install generally useful packages
+  apt:
+    name:
+      - i3
+      - sway
+      - vlc
+      - mpv
+      - ffmpeg
+      - emacs
+      - kwrite
+      - kate
+      - krita
+      - blender
+      - inkscape
+      - pcmanfm-qt
+      - qutebrowser
+      - chromium-browser
+      - firefox
+      - qemu
+      - qemu-kvm
+      - qemu-utils
+      - virt-manager
+      - wine-development
+      - dosbox
+      - webext-ublock-origin-chromium
+      - webext-ublock-origin-firefox
+      - nethack-console
+      - zsh
+      - tmux
+      - screen
+      - curl
+      - git-gui
+      - git-cola
+      - kdiff3
+      - thonny
+      - ttf-mscorefonts-installer
+      - libhivex-bin
+    state: latest
+    update_cache: yes
+
+- name: Remove broken or unnecessary packages
+  apt:
+    name:
+      - xfce4-screensaver
+      - xscreensaver
+    state: absent
+
+- name: Set up additional groups for students
+  vars:
+    additional_groups:
+      - wireshark
+      - kvm
+      - dialout
+      - libvirt
+      - vboxusers
+      - ubridge
+      - docker
+  block:
+    - name: create user@.service.d
+      file:
+        path:  /etc/systemd/system/user@.service.d
+        state: directory
+    - name: override groups in systemd
+      template:
+        src: systemd_group_override.conf
+        dest: /etc/systemd/system/user@.service.d/override.conf
+    - name: create /etc/security/group.conf
+      template:
+        src: security_group.conf
+        dest: /etc/security/group.conf
+    - name: create pam config for libpam_group
+      template:
+        src: pamconfig_groups
+        dest: /usr/share/pam-configs/groups
+    - name: enable libpam_group
+      shell: pam-auth-update --enable groups
+
+- name: Set default keyboard layout to SI
+  template:
+    src: default_keyboard
+    dest: /etc/default/keyboard
+
+- name: Set time to local RTC
+  shell: "timedatectl set-local-rtc 1 --adjust-system-clock"
+
+- name: Enable Wake-on-LAN
+  import_tasks: wake-on-lan.yml
+
+- name: Join AD
+  shell: "realm join --user=ad.join@FRI1.UNI-LJ.SI --computer-ou=OU=Ucilnice FRI1.UNI-LJ.SI"
+
+- name: Fix SSSD config
+  template:
+    src: sssd.conf
+    dest: /etc/sssd/sssd.conf

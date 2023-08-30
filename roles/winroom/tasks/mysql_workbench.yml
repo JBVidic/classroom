@@ -1,0 +1,3 @@
+- name: Install MySQL workbench
+  win_package:
+    path: "https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-8.0.30-winx64.msi"

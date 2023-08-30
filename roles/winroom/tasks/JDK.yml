@@ -1,0 +1,29 @@
+- name: Install Oracle JDK
+  win_package:
+    path: https://download.oracle.com/java/19/latest/jdk-19_windows-x64_bin.msi
+    arguments: INSTALLLEVEL=3
+
+- name: Find Java version
+  win_reg_stat:
+    path: HKLM:\SOFTWARE\JavaSoft\JDK
+    name: CurrentVersion
+  register: reg
+
+- name: Find Java home
+  win_reg_stat:
+    path: "HKLM:\\SOFTWARE\\JavaSoft\\JDK\\{{ reg['value'] }}"
+    name: JavaHome
+  register: reg
+
+- name: Set JAVA_HOME
+  win_environment:
+    name: JAVA_HOME
+    value: "{{ reg['raw_value'] }}"
+    level: machine
+
+- name: Disable Java updates
+  win_regedit:
+    path: HKLM:\SOFTWARE\WOW6432Node\JavaSoft\Java Update\Policy
+    name: EnableJavaUpdate
+    type: dword
+    data: 0

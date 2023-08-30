@@ -1,0 +1,4 @@
+- name: Install Weka 3.6+
+  apt:
+    name: weka
+    state: latest

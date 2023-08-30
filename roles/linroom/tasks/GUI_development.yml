@@ -1,0 +1,35 @@
+- name: Install X11 development
+  apt:
+    name: 
+      - libx11-dev
+      - libxext-dev
+      - x11-utils
+    state: latest
+
+- name: Install GTK development
+  apt:
+    name:
+      - libgtk-4-dev
+      - libgtk-3-dev
+      - libgtkmm-3.0-dev
+    state: latest
+
+- name: Install Wayland development
+  apt:
+    name: 
+      - libwayland-dev
+      - libwlroots-dev
+      - qt6-wayland-dev
+      - qt6-wayland-dev-tools
+      - weston
+    state: latest
+
+- name: Install Glade
+  apt:
+    name: glade
+    state: latest
+
+- name: Install QT Creator
+  apt:
+    name: qtcreator
+    state: latest

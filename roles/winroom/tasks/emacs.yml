@@ -1,0 +1,4 @@
+- name: Install Emacs
+  win_chocolatey:
+    name: emacs.install
+    state: present

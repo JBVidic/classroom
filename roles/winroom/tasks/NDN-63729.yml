@@ -1,0 +1,7 @@
+# Načrtovanje digitalnih naprav
+# Miran.Koprivec@fri.uni-lj.si, Miha.Moskon@fri.uni-lj.si
+# Windows, Vivado 2022.1
+# Načrtovanje digitalnih naprav
+# Miha.Moskon@fri.uni-lj.si
+# Windows, Vivado 2022.1
+- include_tasks: vivado.yml

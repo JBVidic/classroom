@@ -1,0 +1,4 @@
+# Strojno učenje
+# matej.piculin@fri.uni-lj.si, Petar.Vracar@fri.uni-lj.si
+# Windows, R, RStudio
+- include_tasks: rstudio.yml

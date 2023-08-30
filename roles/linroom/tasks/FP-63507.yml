@@ -1,0 +1,11 @@
+# Funkcijsko programiranje
+# Klemen.Klanjscek@fri.uni-lj.si, Matjaz.Kukar@fri.uni-lj.si
+# Windows, GNU/Linux, VS Code, Python 3, Racket (z DrRacket), SML/NJ, Emacs, rlwrap
+#
+- include_tasks: vscode.yml
+- include_tasks: python3.yml
+- include_tasks: racket.yml
+- include_tasks: emacs.yml
+- include_tasks: smlnj.yml
+
+

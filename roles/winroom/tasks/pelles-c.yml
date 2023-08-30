@@ -1,0 +1,30 @@
+- name: Set PellesC version
+  set_fact:
+    target_version: "11.00"
+    target_checksum: "a8ae79f0e340e4c0cec0869dd72fcd875496acc470174aed8eb377eab8bbce96"
+
+- name: Check PellesC install status
+  win_stat:
+    path: C:\Program Files\PellesC\Bin\poide.exe
+  register: file
+  
+- when: not file.stat.exists
+  block:
+    # win_package fails to download for some reason
+    - name: Download PellesC
+      win_get_url:
+        url: http://www.smorgasbordet.com/pellesc/{{ target_version | replace('.', '') }}/setup.exe
+        checksum_algorithm: sha256
+        checksum: "{{ target_checksum }}"
+        dest: 'C:\'
+      register: download
+    
+    - name: Install PellesC
+      win_package:
+        path: "{{ download.dest }}"
+        arguments: /S
+
+    - name: Remove temporary files
+      win_file:
+        path: "{{ download.dest }}"
+        state: absent

@@ -1,0 +1,7 @@
+- name: Install Orange
+  win_package:
+    path: https://download.biolab.si/download/files/Orange3-3.32.0-Miniconda-x86_64.exe
+    arguments: /S /AllUsers
+    creates_path: C:\Program Files\Orange\python.exe
+    creates_version: 3.8.8150.1013
+

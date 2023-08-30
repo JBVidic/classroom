@@ -1,0 +1,6 @@
+# TODO: usposobi install Matlaba na D:
+# TODO: zamenjaj podvojene datoteke s symlinki
+- name: Matlab
+  debug:
+    msg: "Matlab"
+

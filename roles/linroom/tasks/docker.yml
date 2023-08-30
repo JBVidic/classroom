@@ -1,0 +1,23 @@
+
+- name: "Install Podman"
+  apt:
+    name: podman
+    state: latest
+
+- name: "Install containerd"
+  apt:
+    name: containerd
+    state: latest
+
+- name: "Install docker"
+  apt:
+    name: docker
+    state: latest
+
+- name: "Install docker-compose"
+  apt:
+    name: docker-compose
+    state: latest
+
+
+# TODO uredi skupine, da bodo studentje lahko docker tudi uporabljali

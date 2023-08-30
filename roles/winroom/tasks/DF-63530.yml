@@ -1,0 +1,5 @@
+# Digitalna forenzika
+# Aleks.Huc@fri.uni-lj.si, Gasper.FeleZorz@fri.uni-lj.si
+# Windows, GNU/Linux, GNS3, VirtualBox
+- include_tasks: GNS3.yml
+- include_tasks: virtualbox.yml

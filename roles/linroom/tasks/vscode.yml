@@ -1,0 +1,34 @@
+- name: Add VS repo key
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    keyring: /etc/apt/trusted.gpg.d/microsoft.gpg
+
+- name: Add VS repo url
+  apt_repository:
+    repo: "deb https://packages.microsoft.com/repos/vscode stable main"
+
+- name: Install VSCode
+  apt:
+    name: code
+    state: latest
+
+- name: Install VS Code extensions
+  command: code --no-sandbox --user-data-dir "/usr/share/code/resources/app" --extensions-dir "/usr/share/code/resources/app/extensions" --install-extension "{{ item }}"
+  loop:
+  - VisualStudioExptTeam.vscodeintellicode
+  - arthurwang.vsc-prolog
+  - dramforever.vscode-ghc-simple
+  - eamodio.gitlens
+  - justusadam.language-haskell
+  - ms-dotnettools.csharp
+  - ms-python.python
+  - ms-vscode.cpptools
+  - ocamllabs.ocaml-platform
+  - stonebuddha.vscode-better-sml
+  - vscode-icons-team.vscode-icons
+  - vscjava.vscode-java-pack
+  - dan-c-underwood.arm # RA-63703
+  - marus25.cortex-debug # RA-63703
+  - NateAGeek.memory-viewer # RA-63703
+  - ms-vscode.cpptools-extension-pack # RA-63703
+  notify: fix VS code extensions

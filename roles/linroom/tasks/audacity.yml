@@ -1,0 +1,5 @@
+- name: Install Audacity
+  apt:
+    name: audacity
+    state: latest 
+

@@ -1,0 +1,8 @@
+- name: Install JavaFX
+  apt:
+    name: openjfx
+    state: latest
+- name: Install JavaFX source
+  apt:
+    name: openjfx-source
+    state: latest

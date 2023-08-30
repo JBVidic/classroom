@@ -1,0 +1,7 @@
+- name: Install Unity
+  win_chocolatey:
+    name: unity
+
+# Don’t install Unity Hub because it wants a login when run.
+
+# TODO Figure out license stuff.

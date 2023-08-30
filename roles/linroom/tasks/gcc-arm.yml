@@ -1,0 +1,4 @@
+- name: install GCC for ARM
+  apt:
+    name: gcc-12-arm-linux-gnueabi
+    state: latest

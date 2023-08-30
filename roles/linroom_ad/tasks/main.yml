@@ -1,0 +1,41 @@
+- name: Install sssd + samba + keyutil
+  apt:
+    name: 
+      - sssd
+      - sssd-ad
+      - realmd
+      - samba-common-bin
+      - smbclient
+      - cifs-utils
+      - smbclient
+    state: latest
+- name: Install kerberos utils
+  apt:
+    name: 
+      - keyutils
+      - krb5-user
+- name: Install PAM modules
+  apt:
+    name: libpam-modules
+    state: latest
+- name: Enable create homedir on login
+  command: pam-auth-update --enable mkhomedir
+  become: true
+- name: Check whether we already joined
+  command: /bin/bash -c "/usr/sbin/realm list"
+  register: realm_list_results
+- name: Join using realmd
+  expect:
+    command: realm join --user=ad.join@FRI1.UNI-LJ.SI --computer-ou=OU=Ucilnice FRI1.UNI-LJ.SI
+    responses:
+      (?i)Password: "{{ad_join_password}}"
+  ignore_errors: yes
+  when: realm_list_results.stdout == ""
+
+- name: Copy sssd config
+  template:
+    src: sssd.conf
+    dest: "/etc/sssd/sssd.conf"
+    owner: root
+    mode: 0600
+

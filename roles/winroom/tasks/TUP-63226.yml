@@ -1,0 +1,12 @@
+# Tehnologija upravljanja podatkov
+# Luka.Sajn@fri.uni-lj.si
+# Windows, Power designer 12.5, Java JDK, Python 3, dotnet6 SDK, Jupyter Notebook, Eclipse, MySql Workbench, MySQL ODBC Connector, Notepad++
+- include_tasks: Eclipse.yml
+- include_tasks: dotnet6.yml
+- include_tasks: jupyter.yml
+- include_tasks: JDK.yml
+- include_tasks: powerdesigner.yml
+- include_tasks: mysql_workbench.yml
+- include_tasks: mysql-odbc-connector.yml
+- include_tasks: notepad++.yml
+

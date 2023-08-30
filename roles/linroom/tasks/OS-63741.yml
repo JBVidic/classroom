@@ -1,0 +1,6 @@
+# Odločitveni sistemi
+# Martin.Mozina@fri.uni-lj.si
+# Windows
+- name: Odlocitveni sistemi
+  debug:
+    msg: "Odločitveni sistemi 63741 - brez zahtev"

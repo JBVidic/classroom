@@ -1,0 +1,7 @@
+- name: Install Arduino IDE
+  win_package:
+    path: https://downloads.arduino.cc/arduino-ide/arduino-ide_2.0.0_Windows_64bit.exe
+    arguments: /S /AllUsers
+    creates_path: "%ProgramFiles%\\Arduino IDE\\Arduino IDE.exe"
+
+# TODO check if anything else is needed (esp8266com)?

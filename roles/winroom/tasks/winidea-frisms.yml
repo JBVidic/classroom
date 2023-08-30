@@ -1,0 +1,34 @@
+- name: Check WinIDEA-FRISMS install status
+  win_stat:
+    path: C:\iSYSTEM\winIDEA_FRISMS\winIDEA.exe
+  register: file
+  
+- when: not file.stat.exists
+  block:
+    - name: Install WinIDEA-FRISMS
+      win_package:
+        path: "https://www.isystem.com/downloads/winIDEA/setup/winIDEA(x64)9_12_256.exe"
+        arguments: /q APPDIR=c:\iSYSTEM\winIDEA_FRISMS
+
+    - name: Download GCC for WinIDEA-FRISMS
+      win_get_url:
+        url: "https://launchpadlibrarian.net/143626040/gcc-arm-none-eabi-4_7-2013q2-20130614-win32.zip"
+        dest: C:\iSYSTEM\winIDEA_FRISMS\
+      register: download
+
+    - name: Unpack GCC for WinIDEA-FRISMS
+      win_unzip:
+        src: "{{ download.dest }}"
+        dest: C:\iSYSTEM\winIDEA_FRISMS\gcc
+        delete_archive: yes
+
+    - name: Install GCC for WinIDEA-FRISMS
+      win_copy:
+        dest: C:\iSYSTEM\winIDEA_FRISMS\gcc\arm
+        src: C:\iSYSTEM\winIDEA_FRISMS\gcc\GNU Tools ARM Embedded\4.7 2013q2\
+        remote_src: yes
+
+    - name: Remove source files
+      win_file:
+        path: C:\iSYSTEM\winIDEA_FRISMS\gcc\GNU Tools ARM Embedded
+        state: absent

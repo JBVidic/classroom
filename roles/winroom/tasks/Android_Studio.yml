@@ -1,0 +1,76 @@
+- name: Set Android Studio version
+  set_fact:
+    sdk_path: C:\android-sdk
+    studio_version: "2021.3.1.16"
+    tools_version: "8512546_latest"
+
+- name: Check Android Studio tools
+  win_stat:
+    path: "{{ sdk_path }}\\cmdline-tools\\cmdline-tools\\bin\\sdkmanager.bat"
+  register: tools
+
+- when: not tools.stat.exists
+  block:
+    - name: Download Android Studio tools
+      win_get_url:
+        url: "https://dl.google.com/android/repository/commandlinetools-win-{{ tools_version }}.zip"
+        dest: C:\
+
+    - name: Extract Android Studio tools
+      win_unzip:
+        src: "C:\\commandlinetools-win-{{ tools_version }}.zip"
+        dest: "{{ sdk_path }}\\cmdline-tools"
+        delete_archive: yes
+
+- name: Accept Android SDK licenses
+  win_shell: sh -c "yes | /c/android-sdk/cmdline-tools/cmdline-tools/bin/sdkmanager.bat --licenses"
+
+- name: Install Android SDK
+  win_shell: |
+    {{ sdk_path }}\\cmdline-tools\\cmdline-tools\\bin\\sdkmanager --install "build-tools;33.0.0" "cmdline-tools;latest" "emulator" "ndk-bundle" "ndk;25.1.8937393" "platform-tools" "platforms;android-33" "sources;android-33" "system-images;android-33;google_apis;arm64-v8a" "system-images;android-33;google_apis;x86_64"
+
+- name: Install Android Studio
+  win_package:
+    path: "https://redirector.gvt1.com/edgedl/android/studio/install/{{ studio_version }}/android-studio-{{ studio_version }}-windows.exe"
+    arguments: /S /AllUsers
+    expected_return_code: [0, 1223, 3010]
+    creates_path: "%ProgramFiles%\\Android\\Android Studio\\bin\\studio64.exe"
+
+- name: Create Android Studio data directory
+  win_file:
+    path: D:\.android
+    state: directory
+
+- name: Set Android Studio environment variables
+  win_environment:
+    level: machine
+    variables:
+      ANDROID_HOME: "{{ sdk_path }}"
+      ANDROID_PREFS_ROOT: D:\
+      GRADLE_USER_HOME: D:\.gradle
+
+- name: Check HAXM install status
+  win_stat:
+    path: "%ProgramFiles%\\Intel\\HAXM"
+  register: file
+
+- when: not file.stat.exists
+  block:
+    - name: Download HAXM
+      win_get_url:
+        url: https://github.com/intel/haxm/releases/download/v7.7.1/haxm-windows_v7_7_1.zip
+        dest: C:\
+      register: download
+
+    - name: Unzip HAXM
+      win_unzip:
+        src: "{{ download.dest }}"
+        dest: C:\haxm
+
+    - name: Install HAXM
+      win_command: C:\haxm\silent_install.bat
+
+    - name: Remove temporaries
+      win_file:
+        path: C:\haxm
+        state: absent

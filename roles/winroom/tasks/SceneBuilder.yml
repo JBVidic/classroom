@@ -1,0 +1,4 @@
+- name: Install SceneBuilder
+  win_package:
+    path: https://download2.gluonhq.com/scenebuilder/18.0.0/install/win/SceneBuilder-18.0.0.msi
+    arguments: INSTALLDIR="C:\Program Files\SceneBuilder" ALLUSERS=1

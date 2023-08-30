@@ -1,0 +1,9 @@
+- name: Set Netbeans version
+  set_fact:
+    target_version: "15"
+
+- name: Install Netbeans
+  win_package:
+    path: "https://dlcdn.apache.org/netbeans/netbeans-installers/{{ target_version }}/Apache-NetBeans-{{ target_version }}-bin-windows-x64.exe"
+    arguments: --silent
+    creates_path: "%ProgramFiles%\\NetBeans-{{ target_version }}\\netbeans\\bin\\netbeans.exe"

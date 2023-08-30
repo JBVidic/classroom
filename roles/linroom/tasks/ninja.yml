@@ -1,0 +1,4 @@
+- name: Install Ninja
+  apt:
+    name: ninja-build 
+    state: latest

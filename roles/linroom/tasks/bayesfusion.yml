@@ -1,0 +1,10 @@
+# TODO install BayesFusion.yml
+# https://download.bayesfusion.com/files.html?category=Academia#GeNIe
+- name: Install Wine
+  apt:
+    name: wine-development
+    state: latest
+- name: Install Wine binfmt support
+  apt:
+    name: wine-binfmt
+    state: latest

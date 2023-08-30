@@ -1,0 +1,8 @@
+# Principi programskih jezikov
+# Klemen.Klanjscek@fri.uni-lj.si
+# Windows, GNU/Linux, VS Code, Eclipse, Haskell, SWI-Prolog, rlwrap
+
+- include_tasks: vscode.yml
+- include_tasks: Eclipse.yml
+- include_tasks: haskell.yml
+- include_tasks: swi-prolog.yml

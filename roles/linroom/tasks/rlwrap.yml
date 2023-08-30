@@ -1,0 +1,4 @@
+- name: Install rlwrap
+  apt:
+    name: rlwrap
+    state: latest

@@ -1,0 +1,7 @@
+# Računalniška arhitektura
+# Ziga.Pusnik@fri.uni-lj.si, Rok.Cesnovar@fri.uni-lj.si, Robert.Rozman@fri.uni-lj.si, Mira.Trebar@fri.uni-lj.si
+# Windows, RAVINOR, CubeIDE + QEMU Embedded plugin, WinIdea 9.21 + GCC + QEMU, WinIdea 9.12.256 (FRISMS kompatibilna), Visual2
+
+- include_tasks: stm32cube.yml
+- include_tasks: winidea.yml
+- include_tasks: visual2.yml

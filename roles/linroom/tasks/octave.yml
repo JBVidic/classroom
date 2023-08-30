@@ -1,0 +1,4 @@
+- name: Install Octave
+  apt:
+    name: octave
+    state: latest 

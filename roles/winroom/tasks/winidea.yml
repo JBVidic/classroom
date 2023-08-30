@@ -1,0 +1,33 @@
+- name: Check WinIDEA install status
+  win_stat:
+    path: C:\iSYSTEM\winIDEA9\winIDEA.exe
+  register: file
+  
+- when: not file.stat.exists
+  block:
+    - name: Install WinIDEA
+      win_package:
+        path: "https://www.isystem.com/downloads/winIDEA/setup/winIDEA(x64)9_21_110_138559.exe"
+        arguments: /q
+
+    - name: Download QEMU
+      win_get_url:
+        url: "https://www.isystem.si/SWUpdates/qemu/qemu.7z"
+        dest: C:\iSYSTEM\winIDEA9
+
+    - name: Unpack QEMU
+      win_command: 7z x qemu.7z
+      args:
+        chdir: "C:\\iSYSTEM\\winIDEA9"
+
+    - name: Download GCC
+      win_get_url:
+        url: "https://developer.arm.com/-/media/Files/downloads/gnu-rm/10-2020q4/gcc-arm-none-eabi-10-2020-q4-major-win32.zip"
+        dest: C:\iSYSTEM\winIDEA9
+      register: download
+
+    - name: Unpack GCC
+      win_unzip:
+        src: "{{ download.dest }}"
+        dest: C:\iSYSTEM\winIDEA9\gcc
+        delete_archive: yes

@@ -1,0 +1,4 @@
+- name: Install orange
+  pip:
+    executable: pip3
+    name: orange3

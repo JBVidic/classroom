@@ -1,0 +1,9 @@
+- name: Install C/C++ development tools
+  apt:
+    name: 
+      - gcc 
+      - make
+      - automake
+      - g++
+      - cmake
+    state: latest

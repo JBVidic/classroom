@@ -1,0 +1,27 @@
+- name: Set Thonny version
+  set_fact:
+    target_version: 4.0.1
+
+- name: Check Thonny install status
+  win_stat:
+    path: C:\Program Files (x86)\Thonny\thonny.exe
+  register: file
+  
+- when: not file.stat.exists
+  block:
+    # win_package fails to download for some reason
+    - name: Download Thonny
+      win_get_url:
+        url: https://github.com/thonny/thonny/releases/download/v{{ target_version }}/thonny-{{ target_version }}.exe
+        dest: 'C:\'
+      register: download
+    
+    - name: Install Thonny
+      win_package:
+        path: "{{ download.dest }}"
+        arguments: /Verysilent /AllUsers
+
+    - name: Remove temporary files
+      win_file:
+        path: "{{ download.dest }}"
+        state: absent

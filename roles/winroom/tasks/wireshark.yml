@@ -1,0 +1,20 @@
+# npcap=0.96 is the last version to support silent installation
+- name: Install npcap
+  win_package:
+    path: https://npcap.com/dist/npcap-0.96.exe
+    arguments: /S
+    creates_path: "%ProgramFiles%\\Npcap\\npcap.cat"
+
+- name: Install Wireshark
+  win_chocolatey:
+    name: wireshark
+
+- name: Touch Wireshark preferences
+  win_file:
+    path: "%ProgramFiles%\\Wireshark\\preferences"
+    state: touch
+
+- name: Disable Wireshark auto updates
+  win_lineinfile:
+    path: "%ProgramFiles%\\Wireshark\\preferences"
+    line: "gui.update.enabled: FALSE"

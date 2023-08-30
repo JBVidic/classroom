@@ -1,0 +1,5 @@
+# Brezžična in mobilna omrežja
+# Ziga.Pusnik@fri.uni-lj.si, Miran.Koprivec@fri.uni-lj.si
+# Windows, VMware Workstation 16.2.4 Player, wireshark
+- include_tasks: wireshark.yml
+- include_tasks: vmware_player.yml

@@ -1,0 +1,8 @@
+# Programiranje 2
+# bostjan.slivnik@fri.uni-lj.si
+# gedit, vscode, pdf viewer (evince), gcc, g++, make, JDK
+
+- include_tasks: JDK.yml
+- include_tasks: gedit.yml
+- include_tasks: vscode.yml
+- include_tasks: c_development.yml

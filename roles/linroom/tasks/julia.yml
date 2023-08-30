@@ -1,0 +1,12 @@
+- name: Install Julia from tarball
+  block:
+  - name: Create destination for Julia
+    file:
+      path: /opt/Julia
+      state: directory
+  - name: Download and unpack Eclipse
+    unarchive:
+      src: https://julialang-s3.julialang.org/bin/linux/x64/1.6/julia-1.6.7-linux-x86_64.tar.gz
+      dest: /opt/Julia
+      remote_src: yes
+

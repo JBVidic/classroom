@@ -1,0 +1,85 @@
+- name: Install R
+  win_chocolatey:
+    name: r.project
+    package_params: /AddToPath
+
+- name: Find R directory
+  win_find:
+    paths: C:\Program Files\R
+    patterns: ['R-*']
+    file_type: directory
+  register: base
+
+- name: Add R to path
+  win_path:
+    elements:
+    - "{{ base.files[0].path }}\\bin"
+
+- name: Find installed R libraries
+  win_find:
+    paths: "{{ base.files[0].path }}\\library"
+    file_type: directory
+  register: libs
+
+- name: Install R packages
+  win_command: Rscript -
+  args:
+    stdin: install.packages(c("{{ item }}"), repos = "http://cran.rstudio.com")
+  when: item not in (libs.files|map(attribute='filename'))
+  loop:
+    - CORElearn
+    - DEoptim
+    - DEoptimR
+    - GenSA
+    - MASS
+    - NMF
+    - RSNNS
+    - Radviz
+    - adabag
+    - aplpack
+    - arules
+    - arulesViz
+    - bnlearn
+    - caret
+    - class
+    - cluster
+    - e1071
+    - graphics
+    - igraph
+    - ipred
+    - keras
+    - kernlab
+    - kknn
+    - lattice
+    - lpSolveAPI
+    - metaheuristicOpt
+    - neuralnet
+    - nnet
+    - quadprog
+    - randomForest
+    - reshape2
+    - rpart
+    - rpart.plot
+    - smotefamily
+    - tabuSearch
+    - tidyverse
+    - viridisLite
+
+- name: Install RStudio
+  win_chocolatey:
+    name: r.studio
+
+- name: Create configuration directory
+  win_file:
+    path: "%PROGRAMDATA%\\RStudio"
+    state: directory
+
+- name: Disable crash reporting
+  win_copy:
+    dest: "%PROGRAMDATA%\\RStudio\\crash-handler.conf"
+    content: crash-handling-enabled=0
+
+- name: Disable update notifications
+  win_copy:
+    dest: "%PROGRAMDATA%\\RStudio\\rstudio-prefs.json"
+    content: { "check_for_updates": false }

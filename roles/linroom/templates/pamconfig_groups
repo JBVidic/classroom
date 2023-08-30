@@ -1,0 +1,6 @@
+Name: Additional group management through /etc/security/groups.conf
+Default: yes
+Priority: 0
+Auth-Type: Additional
+Auth-Final:
+	optional			pam_group.so

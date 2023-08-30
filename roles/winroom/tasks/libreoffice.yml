@@ -1,0 +1,3 @@
+- name: Install LibreOffice
+  win_chocolatey:
+    name: libreoffice

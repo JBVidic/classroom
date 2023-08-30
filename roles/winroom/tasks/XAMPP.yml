@@ -1,0 +1,28 @@
+- name: Install XAMPP
+  win_chocolatey:
+    name: xampp-81
+
+- name: Make XAMPP config world writable
+  win_acl:
+    user: 'Authenticated Users'
+    path: "C:\\xampp\\xampp-control.ini"
+    type: allow
+    rights: Write
+
+- name: Add firewall rules for XAMPP
+  win_firewall_rule:
+    name: "Allow inbound traffic for XAMPP: {{ item }}"
+    program: "%SystemDrive%\\xampp\\{{ item }}"
+    action: allow
+    direction: in
+    protocol: tcp
+  loop:
+  - "apache\\bin\\httpd.exe"
+  - "mysql\\bin\\mysqld.exe"
+  - "FileZillaFTP\\FileZillaServer.exe"
+  - "MercuryMail\\mercury.exe"
+
+# XAMPP insists on looking for Java and failing without this.
+- name: Set registry key for OpenJDK
+  win_regedit:
+    path: HKLM:\SOFTWARE\JavaSoft\Java Development Kit

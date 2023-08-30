@@ -1,0 +1,4 @@
+# TODO disable update check
+- name: Install Notepad++
+  win_chocolatey:
+    name: notepadplusplus

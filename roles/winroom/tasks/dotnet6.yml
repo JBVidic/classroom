@@ -1,0 +1,3 @@
+- name: Install .NET 6 SDK
+  win_chocolatey:
+    name: dotnet-6.0-sdk

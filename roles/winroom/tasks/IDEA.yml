@@ -1,0 +1,9 @@
+- name: Set IDEA version
+  set_fact:
+    target_version: "2022.2.2"
+
+- name: Install IDEA
+  win_package:
+    path: "https://download.jetbrains.com/idea/ideaIC-{{ target_version }}.exe"
+    arguments: /S
+    creates_path: "%ProgramFiles(x86)%\\JetBrains\\IntelliJ IDEA Community Edition {{ target_version }}\\bin\\idea64.exe"

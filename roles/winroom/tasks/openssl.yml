@@ -1,0 +1,4 @@
+# We have it at least in git and msys2 but what the hell.
+- name: Install OpenSSL
+  win_chocolatey:
+    name: openssl

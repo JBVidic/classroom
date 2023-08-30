@@ -1,0 +1,6 @@
+ansible_connection: winrm
+ansible_winrm_transport: ntlm
+ansible_winrm_server_cert_validation: ignore
+ansible_port: 5985
+logon_type: interactive
+installers: \\ucilnicesmb.fri1.uni-lj.si\ucilnice_d\install

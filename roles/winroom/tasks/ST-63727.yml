@@ -1,0 +1,5 @@
+# Spletne tehnologije
+# David.Jelenc@fri.uni-lj.si
+# Windows, VS Code, XAMPP
+- include_tasks: vscode.yml
+- include_tasks: XAMPP.yml

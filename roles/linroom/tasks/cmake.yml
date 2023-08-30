@@ -1,0 +1,4 @@
+- name: Install cmake
+  apt:
+    name: cmake
+    state: latest

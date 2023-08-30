@@ -1,0 +1,7 @@
+# Digitalno procesiranje signalov
+# Aleks.Huc@fri.uni-lj.si
+# Windows, GNU/Linux, Matlab, wfdb, Octave, Audacity
+- include_tasks: matlab.yml
+- include_tasks: wfdb.yml
+- include_tasks: octave.yml
+- include_tasks: audacity.yml

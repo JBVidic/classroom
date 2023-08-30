@@ -1,0 +1,14 @@
+- name: Install emacs
+  apt:
+    name: emacs
+    state: latest
+
+- name: Install emacs-nox
+  apt:
+    name: emacs-nox
+    state: latest
+
+- name: Install emacs-gtk
+  apt:
+    name: emacs-gtk
+    state: latest

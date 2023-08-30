@@ -1,0 +1,10 @@
+- name: create destination
+  file:
+    path: /opt/Arduino
+    state: directory
+
+- name: unpack Arduino
+  unarchive:
+    src: https://downloads.arduino.cc/arduino-ide/arduino-ide_2.0.0_Linux_64bit.zip
+    dest: /opt/Arduino
+    remote_src: yes

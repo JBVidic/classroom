@@ -1,0 +1,3 @@
+- name: Install SWI-Prolog
+  win_chocolatey:
+    name: swi-prolog

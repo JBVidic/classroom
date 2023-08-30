@@ -1,0 +1,7 @@
+# Uporabniški vmesniki
+# Ales.Smrdel@fri.uni-lj.si
+# Windows, GNU/Linux, Java JDK, IntelliJ IDEA, javafx, SceneBuilder, X11 development, Wayland development, gtk+ development, glade, python
+- include_tasks: JDK.yml
+- include_tasks: IDEA.yml
+- include_tasks: javafx.yml
+- include_tasks: GUI_development.yml

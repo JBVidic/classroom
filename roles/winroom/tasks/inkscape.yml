@@ -1,0 +1,3 @@
+- name: Install Inkscape
+  win_chocolatey:
+    name: inkscape

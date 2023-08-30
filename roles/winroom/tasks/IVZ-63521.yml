@@ -1,0 +1,6 @@
+# Informacijska varnost in zasebnost
+# David.Jelenc@fri.uni-lj.si
+# Java JDK, IntelliJ IDEA, VirtualBox
+- include_tasks: JDK.yml
+- include_tasks: IDEA.yml
+- include_tasks: virtualbox.yml

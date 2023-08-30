@@ -1,0 +1,9 @@
+- name: Set Weka version
+  set_fact:
+    target_version: "3-8-6"
+
+- name: Install Weka
+  win_package:
+    path: "https://prdownloads.sourceforge.net/weka/weka-{{ target_version }}-azul-zulu-windows.exe"
+    arguments: /S
+    creates_path: "%ProgramFiles%\\Weka-{{ target_version }}\\weka.jar"

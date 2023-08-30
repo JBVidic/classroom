@@ -1,0 +1,5 @@
+# Programski jezik C
+# Tomaz.Dobravec@fri.uni-lj.si
+# Windows, Pelles C
+
+- include_tasks: pelles-c.yml

@@ -1,0 +1,27 @@
+- name: Set GNS3 version
+  set_fact:
+    target_version: "3.0.0a2"
+
+- name: Check GNS3 install status
+  win_stat:
+    path: C:\Program Files\GNS3\gns3.exe
+  register: file
+  
+- when: not file.stat.exists
+  block:
+    # win_package fails to download for some reason
+    - name: Download GNS3
+      win_get_url:
+        url: https://github.com/GNS3/gns3-gui/releases/download/v{{ target_version }}/GNS3-{{ target_version }}-all-in-one.exe
+        dest: 'C:\'
+      register: download
+    
+    - name: Install GNS3
+      win_package:
+        path: "{{ download.dest }}"
+        arguments: /S /AllUsers
+
+    - name: Remove temporary files
+      win_file:
+        path: "{{ download.dest }}"
+        state: absent

@@ -1,0 +1,4 @@
+- name: Install Gedit
+  apt:
+    name: gedit
+    state: latest

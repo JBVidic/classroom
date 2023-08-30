@@ -1,0 +1,8 @@
+- name: Install SWI-Prolog
+  apt:
+    name: swi-prolog
+    state: latest
+- name: Install SWI-Prolog - X support
+  apt:
+    name: swi-prolog-x
+    state: latest

@@ -1,0 +1,8 @@
+- name: Install Jupyter Notebook
+  win_command: pip install jupyter jupyterlab
+
+- name: Create Jupyter Notebook shortcut
+  win_shortcut:
+    dest: "C:\\Users\\Public\\Desktop\\Jupyter Notebook.lnk"
+    src: cmd.exe
+    arguments: /k jupyter notebook

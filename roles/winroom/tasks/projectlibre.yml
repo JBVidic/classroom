@@ -1,0 +1,4 @@
+- name: Install ProjectLibre
+  win_package:
+    path: "https://sourceforge.net/projects/projectlibre/files/ProjectLibre/1.9.3/projectlibre-1.9.3.exe"
+    arguments: /VerySilent

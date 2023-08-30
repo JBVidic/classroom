@@ -1,0 +1,16 @@
+- name: Install Jupyter
+  apt:
+    name: jupyter
+    state: latest
+- name: Install Jupyter Console
+  apt:
+    name: jupyter-console
+    state: latest
+- name: Install Jupyter QT Console
+  apt:
+    name: jupyter-qtconsole
+    state: latest
+- name: Install Jupyter Notebook
+  apt:
+    name: jupyter-notebook
+    state: latest

@@ -1,0 +1,26 @@
+- name: Install Firefox
+  win_chocolatey:
+    name: firefox
+- name: Create Firefox policy directory
+  win_file:
+    dest: C:\Program Files\Mozilla Firefox\distribution
+    state: directory
+- name: Set Firefox policies
+  copy:
+    dest: C:\Program Files\Mozilla Firefox\distribution\policies.json
+    content: |
+      {
+        "policies": {
+          "DisableAppUpdate": true,
+          "DisableSystemAddonUpdate": true,
+          "DisableTelemetry": true,
+          "UserMessaging": {
+            "WhatsNew": false,
+            "ExtensionRecommendations": false,
+            "FeatureRecommendations": false,
+            "UrlbarInterventions": false,
+            "SkipOnboarding": true,
+            "MoreFromMozilla": false
+          }
+        }
+      }

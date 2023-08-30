@@ -1,0 +1,5 @@
+- name: Install BayesFusion
+  win_package:
+    path: "{{ installers }}\\genie-academic-setup-4.0.1922-x86.exe"
+    arguments: /VerySilent
+    creates_path: "%ProgramFiles(x86)%\\GeNIe 4.0 Academic\\genie.exe"

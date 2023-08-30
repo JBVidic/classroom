@@ -1,0 +1,9 @@
+# Organizacija računalnikov
+# Robert.Rozman@fri.uni-lj.si
+# Windows, Logisim, Logisim Evolution, RAVINOR, CubeIDE + QEMU Embedded plugin
+- include_tasks: logisim.yml
+- include_tasks: stm32cube.yml
+- include_tasks: ninja.yml
+- include_tasks: cmake.yml
+- include_tasks: gcc-arm.yml
+# TODO: RAVINOR, CubeIDE

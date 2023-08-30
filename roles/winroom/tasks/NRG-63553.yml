@@ -1,0 +1,5 @@
+# Napredna računalniška grafika
+# Ziga.Lesar@fri.uni-lj.si
+# Windows, Build Tools for Visual Studio 2022
+
+- include_tasks: visual_studio.yml

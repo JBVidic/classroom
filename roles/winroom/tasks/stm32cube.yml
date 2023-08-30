@@ -1,0 +1,23 @@
+- name: Check WinIDEA install status
+  win_stat:
+    path: C:\iSYSTEM\winIDEA9\winIDEA.exe
+  register: file
+  
+- when: not file.stat.exists
+  block:
+    - name: Install CubeIDE
+      win_package:
+        path: "D:\\RAVINOR\\st-stm32cubeide_1.10.1_12716_20220707_0928_x86_64.exe"
+        arguments: /S
+
+    - name: Set CubeIDE default workspace
+      win_lineinfile:
+        path: C:\ST\STM32CubeIDE_1.10.1\STM32CubeIDE\stm32cubeide.ini
+        regexp: "osgi.instance.area.default"
+        line: "-Dosgi.instance.area.default=D:/RAVINOR/CubeIDE_Workspace"
+
+    # Replace -installIU... with -list to get available packages.
+    - name: Install QEMU
+      win_command: stm32cubeidec.exe -application org.eclipse.equinox.p2.director -nosplash -repository https://download.eclipse.org/embed-cdt/updates/v6/ -installIU org.eclipse.embedcdt.debug.gdbjtag.qemu.feature.group
+      args:
+        chdir: C:\ST\STM32CubeIDE_1.10.1\STM32CubeIDE

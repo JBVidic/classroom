@@ -1,0 +1,12 @@
+# TODO install Pelles
+- name: Install Pelles
+  debug:
+    msg: "Install Pelles-C"
+- name: Install Wine
+  apt:
+    name: wine-development
+    state: latest
+- name: Install Wine binfmt support
+  apt:
+    name: wine-binfmt
+    state: latest

@@ -1,0 +1,26 @@
+- name: Set Matlab version
+  set_fact:
+    target_version: "r2022b"
+
+- name: Mount Matlab ISO
+  win_disk_image:
+    image_path: "{{ installers }}\\matlab\\matlab-{{ target_version }}.iso"
+    state: present
+  register: disk_image
+
+- name: Install Matlab
+  win_package:
+    path: "{{ disk_image.mount_paths[0] }}\\setup.exe"
+    arguments: -inputFile "{{ installers }}\\matlab\\installer_input.txt"
+
+- name: Unmount Matlab ISO
+  win_disk_image:
+    image_path: "{{ installers }}\\matlab\\matlab-{{ target_version }}.iso"
+    state: absent
+
+# TODO MATLAB throws license error -83 when run
+- name: Install Matlab license
+  win_copy:
+    dest: "%ProgramFiles%\\MATLAB\\{{ target_version }}\\licenses\\network.lic"
+    src: "{{ installers }}\\matlab\\network.lic"
+    remote_src: yes

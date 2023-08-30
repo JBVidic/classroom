@@ -1,0 +1,25 @@
+- name: Check Haskell install status
+  win_stat:
+    path: C:\ghcup\bin\ghc.exe
+  register: file
+
+- when: not file.stat.exists
+  block:
+    - name: Download Haskell
+      win_get_url:
+        url: "https://www.haskell.org/ghcup/sh/bootstrap-haskell.ps1"
+        dest: 'C:\'
+      register: download
+    
+    - name: Install Haskell
+      win_command: powershell.exe {{ download.dest }} -InBash -ExistingMsys2Dir C:\msys64
+
+    - name: Add Haskell to PATH
+      win_path:
+        elements:
+          C:\ghcup\bin
+
+    - name: Remove temporary files
+      win_file:
+        path: "{{ download.dest }}"
+        state: absent

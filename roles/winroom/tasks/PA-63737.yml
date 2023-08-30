@@ -1,0 +1,5 @@
+# Procesna avtomatika
+# Nejc.Ilc@fri.uni-lj.si
+# Windows, VMware Workstation 16.2.4 Player
+
+- include_tasks: vmware_player.yml

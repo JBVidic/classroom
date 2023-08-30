@@ -1,0 +1,19 @@
+- name: Create Logisim directory
+  win_file:
+    path: "%ProgramFiles%\\logisim"
+    state: directory
+
+- name: Install Logisim
+  win_get_url:
+    url: https://sourceforge.net/projects/circuit/files/2.7.x/2.7.1/logisim-generic-2.7.1.jar
+    dest: "%ProgramFiles%\\logisim\\logisim.jar"
+
+- name: Create Logisim shortcut
+  win_shortcut:
+    src: "%ProgramFiles%\\logisim\\logisim.jar"
+    dest: "C:\\Users\\Public\\Desktop\\Logisim.lnk"
+
+- name: Install Logisim-Evolution
+  win_package:
+    path: https://github.com/logisim-evolution/logisim-evolution/releases/download/v3.7.2/logisim-evolution-3.7.2.msi
+    product_id: b30fa00c-da3f-3769-aaea-6571cacf5c30

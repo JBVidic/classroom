@@ -1,0 +1,10 @@
+- name: Set PyCharm version
+  set_fact:
+    target_version: "2022.2.2"
+
+- name: Install PyCharm
+  win_chocolatey:
+    name: pycharm-community
+    version: "{{ target_version }}"
+
+# TODO set default project directory to H:\something

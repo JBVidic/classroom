@@ -1,0 +1,9 @@
+- name: Install SageMath
+  apt:
+    name: sagemath
+    state: latest
+
+- name: Install SageMath - Jupyter
+  apt:
+    name: sagemath-jupyter
+    state: latest

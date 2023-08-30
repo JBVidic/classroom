@@ -1,0 +1,9 @@
+- include_tasks: 7zip.yml
+- include_tasks: chrome.yml
+- include_tasks: firefox.yml
+- include_tasks: libreoffice.yml
+- include_tasks: msys2.yml
+- include_tasks: pycharm.yml # not required by anyone but used by everyone
+- include_tasks: sublime-text.yml
+- include_tasks: sumatrapdf.yml
+- include_tasks: vlc.yml

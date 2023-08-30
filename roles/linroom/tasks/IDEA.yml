@@ -1,0 +1,12 @@
+- name: Install IDEA
+  block:
+  - name: Create destination for JetBrains IDEA
+    file:
+      path: /opt/IDEA
+      state: directory
+  - name: Download and unpack JetBrains IDEA
+    unarchive:
+      src: https://download.jetbrains.com/idea/ideaIE-2022.2.tar.gz
+      dest: /opt/IDEA
+      creates: /opt/IDEA/idea-IE-222.3345.148/build.txt
+      remote_src: yes

@@ -1,0 +1,12 @@
+- name: "Install VirtualBox"
+  apt:
+    name: virtualbox
+    state: latest
+- name: "Install VirtualBox GUI"
+  apt:
+    name: virtualbox-qt
+    state: latest
+- name: "Install VirtualBox kernel module"
+  apt:
+    name: virtualbox-dkms
+    state: latest

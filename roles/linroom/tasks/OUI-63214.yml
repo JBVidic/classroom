@@ -1,0 +1,7 @@
+# Osnove umetne inteligence
+# Jure.Zabkar@fri.uni-lj.si, Ales.Papic@fri.uni-lj.si, matej.piculin@fri.uni-lj.si, Marko.Zeman@fri.uni-lj.si, bojan.zunkovic@fri.uni-lj.si
+# Orange, Weka 3, BayesFusion
+
+- include_tasks: orange.yml
+- include_tasks: weka.yml
+- include_tasks: bayesfusion.yml

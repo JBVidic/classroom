@@ -1,0 +1,3 @@
+- name: Install NetBeans from .deb
+  apt:
+    deb: https://github.com/codelerity/netbeans-installers/releases/download/v15-build1/apache-netbeans_15-1_amd64.deb

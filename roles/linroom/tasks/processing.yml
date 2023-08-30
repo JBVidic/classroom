@@ -1,0 +1,12 @@
+- name: Install Processing
+  block:
+  - name: Create destination for Processing
+    file:
+      path: /opt/processing
+      state: directory
+  - name: Download and unpack processing
+    unarchive:
+      src: https://github.com/processing/processing4/releases/download/processing-1286-4.0.1/processing-4.0.1-linux-x64.tgz 
+      dest: /opt/processing
+      remote_src: yes
+

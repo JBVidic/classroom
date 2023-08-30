@@ -1,0 +1,7 @@
+# Kriptografija in računalniška varnost
+# Klemen.Klanjscek@fri.uni-lj.si, Janos.Vidali@fri.uni-lj.si
+# GNU/Linux, SageMath, Python 3, Jupyter Notebook, OpenSSL, OpenSSH client
+
+- include_tasks: sagemath.yml
+- include_tasks: jupyter.yml
+- include_tasks: openssl.yml

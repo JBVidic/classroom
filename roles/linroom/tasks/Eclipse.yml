@@ -1,0 +1,16 @@
+- name: Install Eclipse snap
+  community.general.snap:
+    name:
+      - eclipse
+    classic: true
+# - name: Install Eclipse from tarball
+#   block:
+#   - name: Create destination for Eclipse
+#     file:
+#       path: /opt/Eclipse
+#       state: directory
+#   - name: Download and unpack Eclipse
+#     unarchive:
+#       src: https://www.eclipse.org/downloads/download.php?file=/oomph/epp/2022-09/R/eclipse-inst-jre-linux64.tar.gz
+#       dest: /opt/Eclipse
+#       remote_src: yes

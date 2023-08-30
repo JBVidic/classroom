@@ -1,0 +1,3 @@
+- name: Install Blender
+  win_package:
+    path: https://ftp.nluug.nl/pub/graphics/blender/release/Blender3.3/blender-3.3.0-windows-x64.msi

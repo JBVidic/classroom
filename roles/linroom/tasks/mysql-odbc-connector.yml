@@ -1,0 +1,5 @@
+- name: Install MariaDB ODBC connector
+  apt:
+    name: odbc-mariadb
+    state: latest
+

@@ -1,0 +1,10 @@
+- name: Install python3
+  apt:
+    name: python3
+    state: latest
+
+- name: Install ipython
+  apt:
+    name: python3-ipython
+    state: latest
+

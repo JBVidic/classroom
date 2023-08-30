@@ -1,0 +1,47 @@
+- name: Set OMNet++ version
+  set_fact:
+    target_version: "6.0.1"
+    target_dir: "C:\\OMNeT++"
+
+- name: Check OMNet++ install status
+  win_stat:
+    path: "{{ target_dir }}"
+  register: file
+
+- when: not file.stat.exists
+  block:
+    - name: Download OMNet++
+      win_get_url:
+        url: "https://github.com/omnetpp/omnetpp/releases/download/omnetpp-{{ target_version }}/omnetpp-{{ target_version }}-windows-x86_64.zip"
+        dest: C:\
+      register: download
+
+    - name: Unzip OMNet++
+      win_unzip:
+        src: "{{ download.dest }}"
+        dest: C:\
+        delete_archive: yes
+
+    - name: Move OMNet++ to final location
+      win_command: cmd.exe /c move "C:\\omnetpp-{{ target_version }}" "{{ target_dir }}"
+
+    - name: Create OMNet++ compile script
+      win_copy:
+        src: "{{ target_dir }}\\mingwenv.cmd"
+        dest: "{{ target_dir }}\\mingwenv-install.cmd"
+        remote_src: yes
+
+    - name: Fix OMNet++ compile script
+      win_lineinfile:
+        path: "{{ target_dir }}\\mingwenv-install.cmd"
+        insertbefore: "rem Open the MinGW"
+        line: call "%HOME%\\tools\\win32.x86_64\\msys2_shell.cmd" -mingw64 -c "./configure && make -j4" & exit
+
+    - name: Compile OMNet++
+      win_command: cmd.exe /c "{{ target_dir }}\\mingwenv-install.cmd"
+
+    - name: Copy OMNet++ shortcut
+      win_copy:
+        src: "{{ target_dir }}\\OMNeT++ {{ target_version }} IDE.lnk"
+        dest: "C:\\Users\\Public\\Desktop"
+        remote_src: yes

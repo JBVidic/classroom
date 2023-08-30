@@ -1,0 +1,4 @@
+# Mark everything in bin/ directories executable. Some extensions do
+# this on activation, but non-root users don’t have permission for it.
+- name: fix VS code extensions
+  command: find /usr/share/code/resources/app -name bin -exec chmod -R +x '{}' ';'

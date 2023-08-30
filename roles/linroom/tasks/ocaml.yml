@@ -1,0 +1,4 @@
+- name: Install Ocaml
+  apt:
+    name: ocaml
+    state: latest

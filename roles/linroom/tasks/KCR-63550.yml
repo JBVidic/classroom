@@ -1,0 +1,7 @@
+# Komunikacija človek računalnik
+# Ales.Smrdel@fri.uni-lj.si
+# Java JDK, Matlab, wfdb, Apache NetBeans
+- include_tasks: JDK.yml
+- include_tasks: matlab.yml
+- include_tasks: wfdb.yml
+- include_tasks: netbeans.yml

@@ -1,0 +1,3 @@
+- name: Install GIMP
+  win_chocolatey:
+    name: gimp

@@ -1,0 +1,10 @@
+# Informacijski sistemi
+# Miha.Grohar@fri.uni-lj.si
+# Windows, GNU/Linux, Docker, VS Code, dotnet6 SDK, GIT, Android Studio
+
+- include_tasks: docker.yml
+- include_tasks: vscode.yml
+- include_tasks: dotnet6.yml
+- include_tasks: git.yml
+- include_tasks: Android_Studio.yml
+

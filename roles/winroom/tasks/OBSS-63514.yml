@@ -1,0 +1,5 @@
+# Obdelava biomedicinskih signalov in slik
+# Ziga.Pirnar@fri.uni-lj.si
+# GNU/Linux, Matlab, wfdb
+- include_tasks: matlab.yml
+- include_tasks: wfdb.yml

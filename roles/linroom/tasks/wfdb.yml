@@ -1,0 +1,27 @@
+# Dobi se jo na: https://www.physionet.org/content/wfdb/10.7.0/ 1. razpakiraj arhiv 2. pojdi v direktorij. 3. poženi .-configure lahko z dodatnimi parametri glede na željeno lokacijo knjižnice 4. poženi make 5. poženi sudo make install 
+- name: Install libFLAC    
+  apt:
+    name: libflac-dev
+    state: latest
+- name: Install libcurl
+  apt:
+    name: libcurl4-openssl-dev
+- name: Install GCC
+  apt:
+    name: gcc
+- name: Install make
+  apt:
+    name: make
+- name: Create WFDB destination
+  file:
+    path: /opt/wfdb
+    state: directory
+- name: Download WFDB
+  unarchive:
+    src: https://www.physionet.org/physiotools/archives/wfdb-10.7/wfdb-10.7.0.tar.gz
+    dest: /opt/wfdb
+    creates: /opt/wfdb/wfdb-10.7.0/README
+    remote_src: yes
+- name: Build and install WFDB
+  shell:
+    cmd: cd /opt/wfdb/wfdb-10.7.0 && ./configure && make && make install

@@ -1,0 +1,4 @@
+# Digitalno načrtovanje
+# Nejc.Ilc@fri.uni-lj.si
+# Windows, Vivado 2022.1
+- include_tasks: vivado.yml

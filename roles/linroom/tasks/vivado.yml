@@ -1,0 +1,5 @@
+# TODO pripravi install Vivado
+# https://www.xilinx.com/member/forms/download/xef.html?filename=Xilinx_Unified_2022.1_0420_0327_Lin64.bin
+- name: Install Vivado
+  debug:
+    msg: "Install Vivado, rodistvori dodatnih 70+G diska na računalnik"

@@ -1,0 +1,8 @@
+- name: Install git
+  win_chocolatey:
+    name: git.install
+    package_params: /GitAndUnixToolsOnPath
+
+- name: Install git-extensions
+  win_chocolatey:
+    name: gitextensions, kdiff3

@@ -1,0 +1,14 @@
+- name: install Haskell platform
+  apt:
+    name: haskell-platform
+    state: latest
+
+- name: install Haskell Tool Stack
+  apt:
+    name: haskell-stack
+    state: latest
+
+- name: install Haskell compiler
+  apt:
+    name: ghc
+    state: latest

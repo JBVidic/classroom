@@ -1,0 +1,41 @@
+- name: Check msys2 install status
+  win_stat:
+    path: C:\msys64
+  register: file
+
+- when: not file.stat.exists
+  block:
+    - name: Download msys2
+      win_get_url:
+        url: "https://github.com/msys2/msys2-installer/releases/download/2022-09-04/msys2-x86_64-20220904.exe"
+        dest: 'C:\'
+      register: download
+
+    - name: Install msys2
+      win_package:
+        path: "{{ download.dest }}"
+        arguments: install --confirm-command --accept-messages --root C:\msys64
+
+    - name: Remove temporary files
+      win_file:
+        path: "{{ download.dest }}"
+        state: absent
+
+    - name: Create desktop shortcut
+      win_shortcut:
+        src: "C:\\msys64\\msys2.exe"
+        dest: "C:\\Users\\Public\\Desktop\\msys2.lnk"
+
+    - name: Update msys2
+      win_command: C:\\msys64\\usr\\bin\\pacman -Syu --noconfirm
+
+    - name: Install essentials
+      win_command: C:\\msys64\\usr\\bin\\pacman -S --noconfirm {{ item }}
+      loop:
+      - gcc
+      - git
+      - make
+      - nano
+      - rlwrap
+      - rsync
+      - vim

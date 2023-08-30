@@ -1,0 +1,13 @@
+- name: Install SML/NJ
+  apt:
+    name: smlnj
+    state: latest
+- name: Install SML/NJ
+  apt:
+    name: smlnj
+    state: latest
+- name: Install Emacs extension for SML
+  apt:
+    name: elpa-sml-mode
+    state: latest
+

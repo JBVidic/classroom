@@ -1,0 +1,4 @@
+- name: Install blender
+  apt:
+    name: blender
+    state: latest

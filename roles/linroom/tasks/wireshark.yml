@@ -1,0 +1,10 @@
+- name: Enable non-privileged users to run wireshark
+  ansible.builtin.debconf:
+    name: wireshark
+    question: wireshark-common/install-setuid
+    value: true
+    vtype: boolean
+- name: "Install Wireshark"
+  apt:
+    name: wireshark-qt
+    state: latest

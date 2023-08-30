@@ -1,0 +1,31 @@
+- name: Install VS Code
+  win_chocolatey:
+    name: vscode
+
+- name: Add firewall rule for VS Code
+  win_firewall_rule:
+    name: "Allow inbound traffic for VS Code"
+    program: "%ProgramFiles%\\Microsoft VS Code\\code.exe"
+    action: allow
+    direction: in
+
+- name: Install VS Code extensions
+  win_shell: code --extensions-dir "C:\\Program Files\\Microsoft VS Code\\resources\\app\\extensions" --install-extension "{{ item }}"
+  args:
+    chdir: "%ProgramFiles%\\Microsoft VS Code\\bin"
+  loop:
+  - VisualStudioExptTeam.vscodeintellicode
+  - arthurwang.vsc-prolog
+  - dramforever.vscode-ghc-simple
+  - eamodio.gitlens
+  - justusadam.language-haskell
+  - ms-dotnettools.csharp
+  - ms-python.python
+  - ms-vscode.cpptools
+  - stonebuddha.vscode-better-sml
+  - vscode-icons-team.vscode-icons
+  - vscjava.vscode-java-pack
+  - dan-c-underwood.arm # RA-63703
+  - marus25.cortex-debug # RA-63703
+  - NateAGeek.memory-viewer # RA-63703
+  - ms-vscode.cpptools-extension-pack # RA-63703

@@ -1,0 +1,81 @@
+# To do
+
+- Haskell
+- GNS3
+- IntelliJ IDEA Community Edition
+- JetBrains PyCharm Community Edition
+- Android Studio
+- Logisim
+- Unity 2019.1.10f1
+- MeshLab
+- Mathlab
+- Adobe Acrobat Reader
+- Eclipse IDE for Java
+- WinHIPsim
+- APS2-Vaje
+- Windows Subsystem for Linux (Ubuntu)
+- Gcc
+- G++
+- Xcode
+- Julia
+- Jupyter notebook/lab
+- Python knjižnice numpy, matplotlib in scipy, sqlite3 in pyodbc
+- WinIdea
+- gcc-arm
+- VisUAL
+- IntelliJ IDEA Ultimate
+- Docker Toolbox (Docker for Windows uporablja HyperV virtualizacijo, ta pa zaklene VT-x samo za sebe ne glede na to ali je pognan ali ne)
+- Apache Maven
+- CUDA Toolkit 8.0 (na HP-jih)
+- Asistentov Asisten
+- FFmpeg (Windows) for Audacity
+- LAME
+- Heidi SQL
+- IAR Embedded Workbench for ARM
+- LTspice IV
+- Microsoft Visual Studio Code
+- SafeExamBrowser
+- Scala Programming Language Distribution
+- XAMPP
+- Xilinx Desing Tools ISE WebPACK
+- Weka
+- TortoiseSVN
+- Tableau
+- Sybase PowerDesigner
+- SoapUI
+- Scilab
+- Standard ML of New Jersey
+- PyQt for Python
+- Oracle VM VirtualBox
+- NetBeans IDE
+- MySQL Workbench CE
+- Microsoft Web Deploy
+- Microsoft Visual Studio Enterprise 2017 (Lahko Community)
+- Microsoft Visual Studio Enterprise 2015 (Na HP-jih)
+- Naložiti modul za C++
+- Node.js LTS
+- SolidWorks
+- Gnuplot
+- Gv
+- Imagemagick
+- OpenModelica
+- Postman
+- Python knjižnice Biopython, skfusion, networkx, pandas, scikit-learn
+- OCaml
+- Podatkovne baze na WAFL
+- Mendeley for Desktop
+- Mendeley Web Importer for Chrome
+- Omnetpp
+- Arduino IDE + esp 8266
+- QUcs
+- Office 2016
+- StarEEvaluation software-FKKT
+- AutoCAD-FKKT
+- PathFinder 2018-FKKT
+- Processing v 3.3.7
+- Microsoft project Professional 2016
+- Autodesk Maya
+- JRE 8u181 in JRE 8u181 (x64) in JDK 10.2
+
+# nonfree
+- Sublime Text

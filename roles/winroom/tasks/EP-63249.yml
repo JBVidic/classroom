@@ -1,0 +1,6 @@
+# Elektronsko poslovanje
+# David.Jelenc@fri.uni-lj.si
+# Windows, VirtualBox, Android Studio
+#
+- include_tasks: virtualbox.yml
+- include_tasks: Android_Studio.yml

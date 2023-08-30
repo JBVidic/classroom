@@ -1,0 +1,8 @@
+- name: Install ethtool
+  apt:
+    name: ethtool
+
+- name: Add udev rule to enable wake-on-lan for ethernet interfaces
+  copy:
+    dest: /etc/udev/rules.d/
+    src: 99-wakeonlan.rules

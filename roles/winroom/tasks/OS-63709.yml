@@ -1,0 +1,4 @@
+# Operacijski sistemi
+# Borut.Batagelj@fri.uni-lj.si, Ziga.Emersic@fri.uni-lj.si, Bojan.Klemenc@fri.uni-lj.si, Matej.Vitek@fri.uni-lj.si
+# VirtualBox
+- include_tasks: virtualbox.yml

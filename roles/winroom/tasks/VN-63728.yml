@@ -1,0 +1,7 @@
+# Vhodno-izhodne naprave
+# Robert.Rozman@fri.uni-lj.si
+# Windows, Logisim Evolution, RAVINOR, WinIdea 9.12.256 (FRISMS kompatibilna), LTSpice
+
+- include_tasks: logisim.yml
+- include_tasks: winidea-frisms.yml
+- include_tasks: ltspice.yml

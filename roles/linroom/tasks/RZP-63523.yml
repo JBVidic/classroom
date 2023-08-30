@@ -1,0 +1,7 @@
+# Računalniška zvočna produkcija
+# Aleks.Huc@fri.uni-lj.si
+# IntelliJ IDEA, Audacity, GIT
+- include_tasks: git.yml
+- include_tasks: audacity.yml
+- include_tasks: IDEA.yml
+

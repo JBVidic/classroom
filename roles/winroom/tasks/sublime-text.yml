@@ -1,0 +1,4 @@
+- name: Install Sublime Text
+  win_chocolatey:
+    name: sublimetext4
+    state: present

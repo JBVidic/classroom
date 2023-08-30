@@ -1,0 +1,5 @@
+# Teorija informacij in sistemov
+# Davor.Sluga@fri.uni-lj.si
+# Windows, VS Code, Python 3
+- include_tasks: vscode.yml
+- include_tasks: thonny.yml

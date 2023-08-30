@@ -1,0 +1,10 @@
+# chocolatey package is broken
+- name: Set Octave version
+  set_fact:
+    target_version: "7.2.0"
+
+- name: Install Octave
+  win_package:
+    path: https://ftpmirror.gnu.org/octave/windows/octave-{{ target_version }}-w64-installer.exe
+    arguments: /S /AllUsers
+    creates_path: C:\Program Files\GNU Octave\Octave-{{ target_version }}

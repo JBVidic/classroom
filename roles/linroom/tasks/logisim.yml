@@ -1,0 +1,12 @@
+# TODO install logisim for linux
+- name: Install Logisim
+  block:
+  - name: Create destination for Logisim
+    file:
+      path: /opt/logisim
+      state: directory
+  - name: Download and unpack Logisim
+    unarchive:
+      src: https://altushost-swe.dl.sourceforge.net/project/circuit/2.7.x/2.7.1/logisim-generic-2.7.1.jar
+      dest: /opt/logisim
+      remote_src: yes

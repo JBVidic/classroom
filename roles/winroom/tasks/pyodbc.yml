@@ -1,0 +1,2 @@
+- name: Install pyodbc
+  win_command: pip install pyodbc

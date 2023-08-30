@@ -1,0 +1,14 @@
+- name: Add GNS3 repository
+  apt_repository:
+    repo: ppa:gns3/ppa
+    state: present
+    update_cache: True
+    validate_certs: False
+- name: Install gns3 server
+  ansible.builtin.apt:
+    name: gns3-server
+    state: latest
+- name: Install gns3 GUI
+  ansible.builtin.apt:
+    name: gns3-gui
+    state: latest

@@ -1,0 +1,4 @@
+- name: Install Oracle JDK 18
+  apt: 
+    deb: "https://download.oracle.com/java/18/latest/jdk-18_linux-x64_bin.deb"
+

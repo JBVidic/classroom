@@ -1,0 +1,6 @@
+# Programiranje specifičnih platform
+# Veljko.Pejovic@fri.uni-lj.si
+# Android Studio, Arduino IDE
+
+- include_tasks: Android_Studio.yml
+- include_tasks: arduino.yml
